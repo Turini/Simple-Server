@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path');
+var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path'), os = require('os');
 
 var app = express();
 
@@ -31,7 +31,10 @@ var statusCode = 200;
 app.get('/', routes.index);
 
 app.get('/ip', function(req, res){
-  res.render('ip');
+
+var server_ip = os.networkInterfaces().eth0[0].address;
+  res.send();
+  res.write('Server ip address: ' + server_ip);
 });
 
 app.get('/fix', function(req, res){
@@ -46,7 +49,7 @@ app.get('/kill', function(req, res){
   res.send();
   res.writeHead(500, {"Content-Type": "text/plain"});
   if (statusCode == 500) res.write('already killed');
-  else res.write('Killed! current statusCode: '+ res.statusCode);
+  else res.write('Killed! Current statusCode: '+ res.statusCode);
   statusCode = res.statusCode;
 });
 

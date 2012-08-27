@@ -5,7 +5,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-	<p id="ip">Your ip address:   </p>
+
+<p id="ip">Your ip address:   </p>
 
 	<script type="application/javascript">
 	    function getip(json){
@@ -15,6 +16,13 @@
 	</script>
 
 	<script type="application/javascript" src="http://jsonip.appspot.com/?callback=getip"></script>
+
+<SCRIPT>
+var ip = new java.net.InetAddress.getLocalHost();
+var ipStr = new java.lang.String(ip);
+document.writeln(ipStr.substring(ipStr.indexOf("/")+1));
+</SCRIPT>
+
   </body>
 
 </html>
